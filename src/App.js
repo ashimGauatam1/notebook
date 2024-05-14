@@ -4,11 +4,13 @@ import Home from './Components/Home';
 import About from './Components/About';
 import Login from './Components/Routes/Login/Login';
 import Signup from './Components/Routes/Signup/Signup';
+import NoteState from './Context/Notestate';
 
 
 function App() {
   return (
     <>
+    <NoteState>
         <BrowserRouter>
           <Routes>
           <Route exact path="/" element={<Home />} />
@@ -17,7 +19,9 @@ function App() {
           <Route  path="/login" element={<Login/>} />
           </Routes>
         </BrowserRouter>
+        </NoteState>
     </>
+
   );
 }
 

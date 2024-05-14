@@ -1,0 +1,48 @@
+.ssc{
+    position: relative;
+    top: 10px;
+    display: inline-block;
+}
+
+
+.scard {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 20px;
+  margin: 20px;
+}
+
+
+
+.product-name {
+  font-size: 18px;
+  margin: 0;
+  color: #098a0d; 
+}
+
+.product-price {
+  font-size: 16px;
+  margin: 15px 0;
+}
+  .see-more-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .see-more-button:hover {
+    background-color: tomato;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .scard {
+      width: calc(100% - 40px); /* Adjust width for smaller screens */
+      margin: 20px 0; /* Adjust margin for smaller screens */
+    }
+  }  

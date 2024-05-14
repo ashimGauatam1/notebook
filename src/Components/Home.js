@@ -1,26 +1,27 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Navbar from './Navbar'
-
+import axios from 'axios';
+import Notes from './Card/Notes';
 const Home = () => {
   return (
     <div>
         <Navbar/>
-        <form>
+        <form style={{position:'absolute',top:'120px',left:'450px'}}>
   <div className="mb-3">
-    <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
-    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+    <label  className="form-label">Topic</label>
+    <input type="text" name="title"  className="form-control" />
   </div>
-  <div className="mb-3">
-    <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
-    <input type="password" className="form-control" id="exampleInputPassword1"/>
+  <div className="mb-3" >
+    <label htmlFor="exampleInputEmail1" className="form-label">Enter your notes</label>
+    <input type="text" name="description"  className="form-control"/>
+    <div  className="form-text">We'll never share your notes with anyone else.</div>
   </div>
-  <div className="mb-3 form-check">
-    <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-    <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" className="btn btn-primary">Submit</button>
+  <button type="submit" className="btn btn-outline-warning">Submit</button>
 </form>
+    <h1 style={{position:'relative',top:'320px',left:'490px'}}>Your Notes</h1>
+    {
+         <Notes />
+     }
     </div>
   )
 }
