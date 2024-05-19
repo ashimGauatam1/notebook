@@ -4,24 +4,31 @@ import Home from './Components/Home';
 import About from './Components/About';
 import Login from './Components/Routes/Login/Login';
 import Signup from './Components/Routes/Signup/Signup';
-import NoteState from './Context/Notestate';
-import Alert from './Components/alert/Alert';
+import { useState } from 'react';
+import NotesList from './Components/Notes/Notes';
+import Add from './Components/Routes/Add_Notes/Add';
 
 
 function App() {
+  const [authToken, setAuthToken] = useState(null);
+
+  // Function to set the authToken when user login
+  const handleLogin = (token) => {
+    setAuthToken(token);
+  };
   return (
     <>
-    <NoteState>
         <BrowserRouter>
-        <Alert message="hello"/>
           <Routes>
           <Route exact path="/" element={<Home />} />
           <Route  path="/about" element={<About />} />
           <Route exact path="/signup" element={<Signup/>} />
-          <Route  path="/login" element={<Login/>} />
+          <Route  path="/login" element={<Login onLogin={handleLogin} />} />
+          <Route path='/add_note' element={<Add/>}/>
+          <Route path='/notelist' element={<NotesList authToken={authToken}/>} />
           </Routes>
         </BrowserRouter>
-        </NoteState>
+   
     </>
 
   );

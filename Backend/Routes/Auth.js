@@ -86,10 +86,9 @@ router.post(
         },
       };
       
-      console.log(data);
       //jwt token
       const authenticated = jwt.sign(data, JWT_SCRT);
-      res.json(authenticated);
+      res.json({'token': authenticated});
     } catch (errors) {
       console.error(errors.message);
       return res.status(500).send("internal server error");
@@ -101,9 +100,7 @@ router.post(
 router.post("/getuser", fetchuser, async (req, res) => {
 try {
     const userId = req.notes.id;
-    //console.log(userId);
     const notes = await Notes.findById(userId).select("-password")
-  //  console.log(notes);
     //res.json({"hi":"user"});
     res.send(notes)
   }

@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { Alert } from 'bootstrap'
 import Navbar from '../../Navbar'
-const Login = () => {
+const Login = ({onLogin}) => {
     let navigate=useNavigate();
     const [data,Setdata]=useState({
         email:"",
@@ -12,18 +12,12 @@ const Login = () => {
     })
     const handlesubmit=async(e)=>{
         e.preventDefault();
-        const response =await fetch("http://localhost:8080/api/auth/login",{
-        method:'POST',
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({email:data.email,password:data.password})
-        });
-        const json=await response.json();
-        console.log(json);
-        if(json.success){
-            localStorage.setItem('token',json.token)
-            navigate("/");
+        const response =await axios.post("http://localhost:8080/api/auth/login",data);
+        if(response.status==200){
+            Setdata(response.data);
+            const authToken=response.data.token;
+            onLogin(authToken);
+            navigate("/notelist");
         }
         else{
             alert("invalid credentials");
