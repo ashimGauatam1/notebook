@@ -15,10 +15,7 @@ const Add = ({authToken}) => {
       const response=await axios.post("http://localhost:8080/api/note/createnote",data,{
         headers: { 'auth-token': authToken }
       });
-      // console.log(headers);
       if(response.status==200){
-        // const uauth=response.data.token;
-        // if(uauth==authToken)
           navigate("/notelist");
       }
       else{

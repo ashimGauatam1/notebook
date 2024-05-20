@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { Alert } from 'bootstrap'
-import Navbar from '../../Navbar'
 const Login = ({onLogin}) => {
     let navigate=useNavigate();
     const [data,Setdata]=useState({
