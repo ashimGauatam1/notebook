@@ -4,12 +4,13 @@ const JWT_SCRT = "ashim$gautam";
 
 const fetchuser = (req, res, next) => {        // middleware
   const token = req.header('auth-token');
+  // console.log(token); 
   if (!token) {
     return res.status(401).json({ error: "invalid token" });
   }
   try {
     const data = jwt.verify(token, JWT_SCRT);
-    console.log(data);
+    // console.log(data);
     req.notes = data.notes;        // yo note vaneko hamle token ma jun object k id banayem tei hunxa
 
     next(); // Call next route in the given i call (req,res)

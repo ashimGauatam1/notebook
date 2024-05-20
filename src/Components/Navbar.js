@@ -1,11 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-const Navbar = () => {
+import { Link, useNavigate } from 'react-router-dom';
+const Navbar = ({isAuthenticated ,handleLogout}) => {
+  
   return (
     <div>
       <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
   <div className="container-fluid">
-    <a className="navbar-brand" href="#">Gautam</a>
+    <a className="navbar-brand" href="/">Notes Here</a>
     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span className="navbar-toggler-icon"></span>
     </button>
@@ -19,15 +20,15 @@ const Navbar = () => {
         </li>
         {isAuthenticated ? (
           <li>
-            <button onClick={handleLogout}>Logout</button>
+            <button to={"/"} style={{"textDecoration":"none" }} onClick={handleLogout} className="nav-link active">Logout</button>
           </li>
         ) : (
           <>
             <li>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/signup" className="nav-link active">Sign Up</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login" className="nav-link active">Login</Link>
             </li>
           </>
         )}
@@ -46,5 +47,6 @@ const Navbar = () => {
     </div>
   )
 }
+
 
 export default Navbar

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Navbar from '../Navbar';
 
 const NotesList = ({ authToken }) => {
   const [notes, setNotes] = useState([]);
@@ -7,7 +8,7 @@ const NotesList = ({ authToken }) => {
   useEffect(() => {
     const fetchNotes = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/api/note/fetchuser', {  // yo milauna xa
+        const response = await axios.get('http://localhost:8080/api/note/fetchuser', { 
           headers: { 'auth-token': authToken }
         });
         setNotes(response.data);

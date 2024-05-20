@@ -20,7 +20,6 @@ const About = () => {
     // })
   return (
     <>
-    <Navbar/>
       <h1>This is About Page</h1>
     </>
   );

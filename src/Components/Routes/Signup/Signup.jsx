@@ -29,8 +29,7 @@ const Signup = () => {
     }      
   }
   return (
-    <div>
-<Navbar/>        
+    <div>    
 <div className="container">
         <div className="signup-form">
             <h2>Sign Up</h2>

@@ -32,7 +32,6 @@ const Login = ({onLogin}) => {
     }
   return (
       <div>
-        <Navbar/>
         <div className='login-body'>
        <div className="login-container">
         <div className="login-box">
