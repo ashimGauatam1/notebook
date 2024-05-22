@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Navbar from '../Navbar';
+import Notes from '../Card/Card';
 
 const NotesList = ({ authToken }) => {
   const [notes, setNotes] = useState([]);
@@ -22,16 +23,12 @@ const NotesList = ({ authToken }) => {
 
   return (
     <div>
-      <h2>Your Notes</h2>
-      <ul>
+      <h2 style={{textAlign:'center',marginTop:'10px'}}>Your Notes</h2>
+      
         {notes.map(note => (
-          <li key={note._id}>
-            <h3>{note.title}</h3>
-            <p>{note.description}</p>
-            <p>Date: {new Date(note.date).toLocaleString()}</p>
-          </li>
+          <Notes notes={note}/>
         ))}
-      </ul>
+      
     </div>
   );
 };

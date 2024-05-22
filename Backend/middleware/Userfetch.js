@@ -6,7 +6,7 @@ const fetchuser = (req, res, next) => {        // middleware
   const token = req.header('auth-token');
   // console.log(token); 
   if (!token) {
-    return res.status(401).json({ error: "invalid token" });
+    return res.status(401).json({ success:false, error: "invalid token" });
   }
   try {
     const data = jwt.verify(token, JWT_SCRT);

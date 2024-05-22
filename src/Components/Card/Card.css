@@ -1,10 +1,7 @@
 .ssc{
     position: relative;
     top: 10px;
-    display: inline-block;
 }
-
-
 .scard {
   border: 1px solid #f0e5e5;
   border-radius: 18px;
@@ -30,7 +27,7 @@
 .product-name {
   font-size: 18px;
   margin: 0;
-  color: #1808ff; 
+  color: #ff00ea; 
 }
 
 .product-price {
@@ -52,10 +49,28 @@
   .see-more-button:hover {
     background-color: #b3389e;
     }
+    
+  .see-more1-button {
+    background-color: black;
+    color: white;
+    border: none;
+    position: relative;
+    top: 112px;
+    left: 100px;
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+
+  }
   
+  .see-more1-button:hover {
+    background-color: #b3389e;
+    }
+/*   
   @media screen and (max-width: 768px) {
     .scard {
       width: calc(100% - 40px);
       margin: 20px 0;
     }
-  }  
+  }   */

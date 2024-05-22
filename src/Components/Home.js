@@ -1,11 +1,10 @@
 import React from 'react'
-import Navbar from './Navbar'
 import '../Components/Card/Card.css';
 import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
-        <div className='ssc' >
+        <div className='ssc' style={{display:'inline-block'}} >
                 <div className='scard-body' >
                 <div className="scard animate__animated animate__fadeIn" >
                   <h2 className="product-name">Sign Up</h2>
@@ -14,7 +13,7 @@ const Home = () => {
                  </div>
                </div>
                </div>
-               <div className='ssc' >
+               <div className='ssc' style={{display:'inline-block'}}>
                 <div className='scard-body' >
                 <div className="scard animate__animated animate__fadeIn" >
                   <h2 className="product-name">Log In</h2>
@@ -23,7 +22,7 @@ const Home = () => {
                  </div>
                </div>
                </div>
-               <div className='ssc' >
+               <div className='ssc' style={{display:'inline-block'}}>
                 <div className='scard-body' >
                 <div className="scard animate__animated animate__fadeIn" >
                   <h2 className="product-name">Add Notes</h2>
@@ -32,7 +31,7 @@ const Home = () => {
                  </div>
                </div>
                </div>
-               <div className='ssc' >
+               <div className='ssc' style={{display:'inline-block'}}>
                 <div className='scard-body' >
                 <div className="scard animate__animated animate__fadeIn" >
                   <h2 className="product-name">View Notes</h2>
