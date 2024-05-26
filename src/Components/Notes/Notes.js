@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Navbar from '../Navbar';
 import Notes from '../Card/Card';
 
 const NotesList = ({ authToken }) => {
@@ -36,8 +35,3 @@ const NotesList = ({ authToken }) => {
 export default NotesList;
 
 
-//   <h1 style={{position:'relative',top:'320px',left:'490px'}}>Your Notes</h1>
-//   {
-//        <Notes />
-//    }
-  
