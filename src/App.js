@@ -29,8 +29,8 @@ function App() {
           <Route  path="/about" element={<About />} />
           <Route exact path="/signup" element={<Signup/>} />
           <Route  path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path='/add_note' element={<Add authToken={authToken}/>}/>
-          <Route path='/notelist' element={<NotesList authToken={authToken}/>} />
+          <Route path='/add_note' element={<Add authToken={authToken} isAuthenticated={isAuthenticated}/>}/>
+          <Route path='/notelist' element={<NotesList authToken={authToken} isAuthenticated={isAuthenticated}/>} />
           </Routes>
         </BrowserRouter>
    

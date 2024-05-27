@@ -1,9 +1,12 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import Alert from '../../alert/Alert';
 
-const Add = ({authToken}) => {
+const Add = ({authToken,isAuthenticated}) => {
   const navigate=useNavigate();
+  const [alert,SetAlert]=useState(false);
+  const [alertType, setAlertType] = useState('danger');
   const [data,Setdata]=useState({
     "title":"",
     "description":""
@@ -19,11 +22,13 @@ const Add = ({authToken}) => {
           navigate("/notelist");
       }
       else{
-        alert("something went wrong");
+        SetAlert(true);
+        setAlertType('danger');
       }
     }
     catch (error) {
-      console.error(error);
+      SetAlert(true);
+        setAlertType('danger');
     }
   }
   const handlechange=(e)=>{
@@ -35,6 +40,10 @@ const Add = ({authToken}) => {
   }
   return (
     <div>
+      {alert && <Alert type={alertType} message="Something went wrong. Please try again later." onClose={() => SetAlert(false)} />}
+      {!isAuthenticated ?
+       <Alert type={alertType} message="Please Login First." onClose={() => SetAlert(false)} />
+  :
       <form onSubmit={handlesubmit} style={{position:'absolute',top:'120px',left:'450px',boxShadow:'0 0 10px 10px rgba(1,0.5,0,0.2)',padding:'20px'}}>
 <div className="mb-3">
   <label  className="form-label">Topic</label>
@@ -47,7 +56,7 @@ const Add = ({authToken}) => {
 </div>
 <button type="submit" className="btn btn-outline-warning" >Submit</button>
 </form>
-
+      }
     </div>
   )
 }

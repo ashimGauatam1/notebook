@@ -2,24 +2,33 @@ import React, { useState } from 'react'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import Alert from '../../alert/Alert'
 const Login = ({onLogin}) => {
     let navigate=useNavigate();
+  const [alertType, setAlertType] = useState('danger');
+  const [showAlert, setShowAlert] = useState(false);
     const [data,Setdata]=useState({
         email:"",
         password:""
     })
     const handlesubmit=async(e)=>{
         e.preventDefault();
-        const response =await axios.post("http://localhost:8080/api/auth/login",data);
-        if(response.status==200){
+        try {
+        const response = await axios.post("http://localhost:8080/api/auth/login", data);
+        if (response.status === 200) {
             Setdata(response.data);
-            const authToken=response.data.token;
+            const authToken = response.data.token;
             onLogin(authToken);
             navigate("/notelist");
         }
-        else{
-            alert("invalid credentials");
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+        setAlertType('danger');
+        setShowAlert(true);
+        } else {
+            alert("An error occurred. Please try again later.");
         }
+    }
     }
     const handlechange=(e)=>{
         const {name,value}=e.target;
@@ -30,6 +39,7 @@ const Login = ({onLogin}) => {
     }
   return (
       <div>
+         {showAlert && <Alert type={alertType} message="Invalid Credentials. Please check your email and password .If you are new kindly register" onClose={() => setShowAlert(false)} />}
         <div className='login-body'>
        <div className="login-container">
         <div className="login-box">

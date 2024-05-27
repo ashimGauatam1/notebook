@@ -1,11 +1,14 @@
-import React from 'react'
-
-const Alert = (props) => {
+import React from 'react';
+import './Alert.css';
+const Alert = ({ type, message, onClose }) => {
   return (
-    <div class="alert alert-primary" role="alert">
-  {props.messages}
-</div>
-  )
-}
+    <div className={`alert alert-${type}`} style={{fontWeight:'bold'}} role="alert">
+      {message}
+      <button type="button" className="close" aria-label="Close" onClick={onClose}>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  );
+};
 
-export default Alert
+export default Alert;
