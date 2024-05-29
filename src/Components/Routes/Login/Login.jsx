@@ -19,11 +19,15 @@ const Login = ({onLogin}) => {
         if (response.status === 200) {
             Setdata(response.data);
             const authToken = response.data.token;
-            Settoken(authToken);
-            console.log(authToken);
-            localStorage.setItem('authToken', authToken);
-            onLogin(authToken);
-            navigate("/notelist");
+            
+            // console.log(authToken);
+            localStorage.setItem('authToken', authToken);     
+            const token = localStorage.getItem('authToken');
+            if (token) {
+              onLogin(token);
+            }
+            // onLogin(authToken);
+            navigate("/");
         }
     } catch (error) {
         if (error.response && error.response.status === 400) {
