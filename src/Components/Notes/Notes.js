@@ -20,7 +20,6 @@ const NotesList = ({ authToken,isAuthenticated }) => {
         setAlertType('danger');
       }
     };
-
     fetchNotes();
   }, [authToken]);
 

@@ -20,7 +20,7 @@ const Navbar = ({isAuthenticated ,handleLogout}) => {
         </li>
         {isAuthenticated ? (
           <li>
-            <button to={"/"} style={{"textDecoration":"none" }} onClick={handleLogout} className="nav-link active">Logout</button>
+            <button to={"/login"} style={{"textDecoration":"none" }} onClick={handleLogout} className="nav-link active">Logout</button>
           </li>
         ) : (
           <>

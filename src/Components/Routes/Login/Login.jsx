@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -7,7 +7,8 @@ const Login = ({onLogin}) => {
     let navigate=useNavigate();
   const [alertType, setAlertType] = useState('danger');
   const [showAlert, setShowAlert] = useState(false);
-    const [data,Setdata]=useState({
+    const [token,Settoken]=useState("");
+  const [data,Setdata]=useState({
         email:"",
         password:""
     })
@@ -18,6 +19,9 @@ const Login = ({onLogin}) => {
         if (response.status === 200) {
             Setdata(response.data);
             const authToken = response.data.token;
+            Settoken(authToken);
+            console.log(authToken);
+            localStorage.setItem('authToken', authToken);
             onLogin(authToken);
             navigate("/notelist");
         }
@@ -37,6 +41,7 @@ const Login = ({onLogin}) => {
             [name]:value
         })
     }
+    
   return (
       <div>
          {showAlert && <Alert type={alertType} message="Invalid Credentials. Please check your email and password .If you are new kindly register" onClose={() => setShowAlert(false)} />}
@@ -47,7 +52,7 @@ const Login = ({onLogin}) => {
             <form onSubmit={handlesubmit}>
                 <input type="email" placeholder="Email"  name="email"onChange={handlechange} required/>
                 <input type="password" placeholder="Password" name="password" onChange={handlechange}  required/>
-                <button type="submit">Login</button>
+                <button type="submit" >Login</button>
             </form>
             <div className="login-links">
                 <Link to={"/forgot"}>Forgot Password?</Link>

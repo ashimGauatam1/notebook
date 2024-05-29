@@ -88,6 +88,8 @@ router.post(
       
       //jwt token
       const authenticated = jwt.sign(data, JWT_SCRT);
+      req.session.token = authenticated;
+      
       res.json({'token': authenticated});
     } catch (errors) {
       console.error(errors.message);
