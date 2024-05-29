@@ -14,13 +14,11 @@ function App() {
   const [authToken, setAuthToken] = useState(null);
   const handlelogin=(authToken)=>{
    
-    // useEffect(() => {
       const token = localStorage.getItem('authToken');
       if (token) {
         setAuthToken(token);
       }
       console.log(token);
-    // }, []);
     
   }
   const handleLogout = () => {
