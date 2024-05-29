@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter,Routes, Route, useNavigate } from 'react-router-dom'; 
 import Home from './Components/Home';
-import About from './Components/About';
+import About from './Components/Routes/About/About';
 import Login from './Components/Routes/Login/Login';
 import Signup from './Components/Routes/Signup/Signup';
 import { useState ,useEffect} from 'react';
@@ -23,8 +23,10 @@ function App() {
   const handleLogout = () => {
     setAuthToken(null);
     localStorage.removeItem('authToken');
-    
   };
+  setTimeout(()=>{
+    handleLogout();
+  },[24*60*60*1000])
   console.log(authToken);
   const isAuthenticated = !!authToken;
   return (

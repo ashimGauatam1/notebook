@@ -6,6 +6,7 @@ import Alert from '../../alert/Alert';
 const Add = ({authToken,isAuthenticated}) => {
   const navigate=useNavigate();
   const [alert,SetAlert]=useState(false);
+  const [message,Setmessage]=useState("");
   const [alertType, setAlertType] = useState('danger');
   const [data,Setdata]=useState({
     "title":"",
@@ -19,15 +20,19 @@ const Add = ({authToken,isAuthenticated}) => {
         headers: { 'auth-token': authToken },
       });
       if(response.status==200){
-          navigate("/notelist");
+        SetAlert(true);
+        Setmessage("Note Added. Please check your Notes Section");
+        setAlertType('success');
       }
       else{
         SetAlert(true);
+        Setmessage("Something went wrong. Please try again later");
         setAlertType('danger');
       }
     }
     catch (error) {
       SetAlert(true);
+      Setmessage("Something went wrong. Please try again later");
         setAlertType('danger');
     }
   }
@@ -40,7 +45,7 @@ const Add = ({authToken,isAuthenticated}) => {
   }
   return (
     <div>
-      {alert && <Alert type={alertType} message="Something went wrong. Please try again later." onClose={() => SetAlert(false)} />}
+      {alert && <Alert type={alertType} message={message} onClose={() => SetAlert(false)} />}
       {!isAuthenticated ?
        <Alert type={alertType} message="Please Login First." onClose={() => SetAlert(false)} />
   :
