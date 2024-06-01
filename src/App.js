@@ -27,7 +27,7 @@ function App() {
   setTimeout(()=>{
     handleLogout();
   },[24*60*60*1000])
-  console.log(authToken);
+  // console.log(authToken);
   const isAuthenticated = !!authToken;
   return (
     <>

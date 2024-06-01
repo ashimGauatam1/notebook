@@ -31,7 +31,7 @@ const NotesList = ({ authToken,isAuthenticated }) => {
         <div>
           <h2 style={{textAlign:'center',marginTop:'10px'}}>Your Notes</h2>
           {notes && notes.map(note => (
-            <Notes key={note.id} notes={note} />
+            <Notes key={note._id} notes={note} />
           ))}
         </div>
       )}

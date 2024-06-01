@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Card.css';
-import { Link } from 'react-router-dom';
+import { Link, redirect } from 'react-router-dom';
+import axios from 'axios';
 
 const Notes = ({ notes }) => {
   const [showMore, setShowMore] = useState(false);
@@ -11,10 +12,22 @@ const Notes = ({ notes }) => {
     setShowMore(!showMore);
   };
 
+  const handleDeleteNote=async(id)=>{
+    console.log(id);
+    const response=await axios.delete(`http://localhost:8080/api/note/deletenote/${id}`);
+    if(response.status==200){
+      console.log("note deleted");
+      window.location.reload();
+    }
+    else{
+      alert("Error while deleting note");
+    }
+  }
+  // console.log(notes._id);
   return (
     <div style={{ display: 'inline-block' }}>
       <div className='ssc'>
-        <div className='scard-body'>
+        <div className='scard-body' key={notes._id}>
           <div className='scard animate__animated animate__fadeIn'style={{ height: cardHeight,width:cardWidth }}>
             <h2 className='product-name'>{notes.title}</h2>
             {notes.description.length > maxLength ? (
@@ -32,7 +45,7 @@ const Notes = ({ notes }) => {
               <b><p className='product-price'>{notes.description}</p></b>
             )}
             <p className='product-name' style={{ color: 'blueviolet' }}>Date: {new Date(notes.date).toLocaleString()}</p>
-            <Link style={{ textDecoration: 'none', marginTop: '5px', backgroundColor: 'red' }} className="see-more-button">Delete</Link>
+            <Link onClick={() => handleDeleteNote(notes._id)}  style={{ textDecoration: 'none', marginTop: '5px', backgroundColor: 'red' }} className="see-more-button">Delete</Link>
           </div>
         </div>
       </div>

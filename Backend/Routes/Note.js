@@ -23,7 +23,7 @@ router.post(
     // if error
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      res.send({ errors: result.array() });
+      res.send({ errors: "empty" });
     }
     try {
       const { title, description } = req.body;
@@ -76,7 +76,7 @@ router.put("/updatenote/:id", fetchuser, async (req, res) => {
 });
 
 // delete note
-router.delete("/deletenote/:id", fetchuser, async (req, res) => {
+router.delete("/deletenote/:id", async (req, res) => {
   try {
     //finding
     let note = await Note.findById(req.params.id);
@@ -90,8 +90,8 @@ router.delete("/deletenote/:id", fetchuser, async (req, res) => {
     note = await Note.findByIdAndDelete(req.params.id);
     res.json({ success: "user deleted of id ", note: note });
 
-    console.log(note);
-    res.send(note);
+    // console.log(note);
+    // res.send(note);
   } catch (error) {
     console.error(error.message);
     return res.status(500).send("internal server error");
