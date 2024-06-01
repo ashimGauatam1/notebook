@@ -23,7 +23,7 @@ const Notes = ({ notes }) => {
       alert("Error while deleting note");
     }
   }
-  // console.log(notes._id);
+  
   return (
     <div style={{ display: 'inline-block' }}>
       <div className='ssc'>
