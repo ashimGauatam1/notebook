@@ -10,7 +10,7 @@ const Add = ({authToken,isAuthenticated}) => {
   const [alertType, setAlertType] = useState('danger');
   const [data,Setdata]=useState({
     "title":"",
-    "description":""
+    // "description":""
   })
   const handlesubmit=async(e)=>{
  
