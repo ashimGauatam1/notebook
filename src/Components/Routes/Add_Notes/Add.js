@@ -13,7 +13,7 @@ const Add = ({authToken,isAuthenticated}) => {
     "description":""
   })
   const handlesubmit=async(e)=>{
-    // console.log(authToken);
+ 
     e.preventDefault();
     try{
       const response=await axios.post("http://localhost:8080/api/note/createnote",data,{
@@ -31,7 +31,7 @@ const Add = ({authToken,isAuthenticated}) => {
       }
     }
     catch (error) {
-      SetAlert(true);
+      // SetAlert(true);
       Setmessage("Something went wrong. Please try again later");
         setAlertType('danger');
     }
