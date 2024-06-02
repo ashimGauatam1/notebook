@@ -31,7 +31,7 @@ const Add = ({authToken,isAuthenticated}) => {
       }
     }
     catch (error) {
-      // SetAlert(true);
+      SetAlert(true);
       Setmessage("Something went wrong. Please try again later");
         setAlertType('danger');
     }
