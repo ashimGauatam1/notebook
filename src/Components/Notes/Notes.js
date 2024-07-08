@@ -4,6 +4,9 @@ import Notes from '../Card/Card';
 import Alert from '../alert/Alert';
 
 const NotesList = ({ authToken,isAuthenticated }) => {
+  const [notes, setNotes] = useState([]);
+  const [displayAlert, setDisplayAlert] = useState(false);
+  const [alertType,setAlertType]=useState('danger');
 
   useEffect(() => {
     const fetchNotes = async () => {
