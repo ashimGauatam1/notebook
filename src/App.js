@@ -34,7 +34,9 @@ function App() {
         <Navbar isAuthenticated={isAuthenticated} handleLogout={handleLogout} />
           <Routes>
           <Route exact path="/" element={<Home />} />
-         <Route  path="/login" element={<Login onLogin={handlelogin}/>} />
+          <Route  path="/about" element={<About />} />
+          <Route exact path="/signup" element={<Signup/>} />
+          <Route  path="/login" element={<Login onLogin={handlelogin}/>} />
           <Route path='/add_note' element={<Add authToken={authToken} isAuthenticated={isAuthenticated}/>}/>
           <Route path='/notelist' element={<NotesList authToken={authToken} isAuthenticated={isAuthenticated}/>} />
           </Routes>
