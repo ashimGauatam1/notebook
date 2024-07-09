@@ -4,8 +4,15 @@ import { Link } from 'react-router-dom';
 const Home = () => {
   return (
     <div>
-        
-        
+        <div className='ssc' style={{display:'inline-block'}} >
+                <div className='scard-body' >
+                <div className="scard animate__animated animate__fadeIn" >
+                  <h2 className="product-name">Sign Up</h2>
+                   <b><p className="product-price">If you are visiting for first time in our website then kindly sign up with your email .</p></b>
+                   <Link style={{"textDecoration":"none" }} className="see-more-button" to="/signup">Sign Up</Link>
+                 </div>
+               </div>
+               </div>
                <div className='ssc' style={{display:'inline-block'}}>
                 <div className='scard-body' >
                 <div className="scard animate__animated animate__fadeIn" >
